@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,7 +33,10 @@ public class InfoPopup : MonoBehaviour
         _automationCost.text = config.AutomationCost.ToString();
         _price.text = config.GeneratorCost.ToString();
         _name.text = config.Name;
-        _cycleTime.text = config.AutomationCost.ToString();
+
+        TimeSpan cycleSpan = TimeSpan.FromSeconds(config.PayoutTime);
+        _cycleTime.text = cycleSpan.ToString(@"mm\:ss");
+
         _payoutAmount.text = config.PayoutAmount.ToString();
     }
 }
