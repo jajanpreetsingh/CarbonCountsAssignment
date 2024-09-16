@@ -17,6 +17,8 @@ public class Shop : Singleton<Shop>
 
     private List<ShopItem> _shopItems;
 
+    public List<GeneratorConfig> AvailableConfigs => _availableGenerators;
+
     private void Start()
     {
         SetupShop();
@@ -61,5 +63,15 @@ public class Shop : Singleton<Shop>
         _infoPopup.Init(config);
 
         _infoPopup.gameObject.SetActive(true);
+    }
+
+    public int GetConfigIndex(string name)
+    {
+        for (int i = 0; i < _availableGenerators.Count; i++)
+        {
+            if (_availableGenerators[i].Name == name) return i;
+        }
+
+        return -1;
     }
 }

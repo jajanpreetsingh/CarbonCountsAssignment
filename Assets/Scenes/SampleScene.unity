@@ -327,7 +327,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1035771448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -359,16 +359,25 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1035771451}
-  toggleTransition: 1
-  graphic: {fileID: 0}
-  m_Group: {fileID: 2081935461}
-  onValueChanged:
+  m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 428732529}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
-        m_Mode: 0
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3686619753993042544}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -377,7 +386,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
 --- !u!1 &1233847195
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +521,7 @@ MonoBehaviour:
       Payout: 100000
   _cashOnHand: {fileID: 741216119}
   _gambleRewardAmount: {fileID: 1333690532}
-  _shopInventoryToggle: {fileID: 2081935461}
+  _shop: {fileID: 428732529}
 --- !u!1 &1271198025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1542,6 @@ GameObject:
   - component: {fileID: 2081935459}
   - component: {fileID: 2081935458}
   - component: {fileID: 2081935457}
-  - component: {fileID: 2081935461}
   m_Layer: 5
   m_Name: ToggleShopInventory
   m_TagString: Untagged
@@ -1641,19 +1648,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081935455}
   m_CullTransparentMesh: 1
---- !u!114 &2081935461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081935455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 0
 --- !u!1 &2103816593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,7 +1734,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2103816593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -1771,17 +1765,14 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2103816596}
-  toggleTransition: 1
-  graphic: {fileID: 0}
-  m_Group: {fileID: 2081935461}
-  onValueChanged:
+  m_TargetGraphic: {fileID: 1035771451}
+  m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3686619753993042544}
+      - m_Target: {fileID: 428732529}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
-        m_Mode: 0
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1790,7 +1781,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+      - m_Target: {fileID: 3686619753993042544}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!224 &3225958020868607888 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7286155931748193879, guid: 401605593bc4030479df4791c9a8a0d1, type: 3}
@@ -1868,7 +1870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4331407991240634625, guid: 12b7c6b9a1f5e124598200fe7f93f9a1, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 86.726746
       objectReference: {fileID: 0}
     - target: {fileID: 4331407991240634625, guid: 12b7c6b9a1f5e124598200fe7f93f9a1, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2152,9 +2154,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2973937041148782316, guid: d0881c0ea149e7b43a60af60294d56d6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -134.29999
+      objectReference: {fileID: 0}
     - target: {fileID: 4412785064276063955, guid: d0881c0ea149e7b43a60af60294d56d6, type: 3}
       propertyPath: m_Name
       value: Popup
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416846484809572614, guid: d0881c0ea149e7b43a60af60294d56d6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.929993
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -16,12 +16,12 @@ public class GeneratorInventory : Singleton<GeneratorInventory>
 
     private void OnEnable()
     {
-        RefreshInventory(PlayerController.Instance.Data.GeneratorInventory);
+        RefreshInventory();
     }
 
-    public void RefreshInventory(List<Generator> generators)
+    public void RefreshInventory()
     {
-        _availableGenerators = generators;
+        _availableGenerators = PlayerController.Instance.Data.GeneratorInventory;
 
         if (_uiItems == null)
         {

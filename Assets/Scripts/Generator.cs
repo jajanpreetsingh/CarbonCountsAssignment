@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static PlayerDataSerializable;
 
 public class Generator
 {
@@ -8,6 +9,7 @@ public class Generator
     private float _payoutTimer;
 
     private bool _running;
+    private GeneratorSerializable gen;
 
     public bool Running => _running;
     public bool Automated => _automated;
@@ -19,6 +21,26 @@ public class Generator
         _generatorConfig = generatorConfig;
 
         _payoutTimer = _generatorConfig.PayoutTime;
+    }
+
+    public Generator(GeneratorSerializable gen)
+    {
+        _automated = gen.Automated;
+        _running = gen.Running;
+        _payoutTimer = gen.PayoutTimer;
+
+        _generatorConfig = Shop.Instance.AvailableConfigs[gen.ConfigIndex];
+    }
+
+    public static implicit operator GeneratorSerializable(Generator gen)
+    {
+        return new GeneratorSerializable()
+        {
+            Automated = gen.Automated,
+            Running = gen.Running,
+            PayoutTimer = gen._payoutTimer,
+            ConfigIndex = Shop.Instance.GetConfigIndex(gen.GeneratorConfig.Name)
+        };
     }
 
     public void Run()

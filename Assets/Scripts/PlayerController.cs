@@ -65,6 +65,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private const int SEED_CASH = 100;
     private PlayerData _data;
+    private DataLoader _dataLoader;
 
     public PlayerData Data => _data;
 
@@ -72,13 +73,13 @@ public class PlayerController : Singleton<PlayerController>
     {
         base.Awake();
 
-        _data = new(SEED_CASH);
-
-        UpdateUI();
-
         _weightedPayoutTable.SanitizeStrips();
 
         _shop.SetActive(true);
+
+        _dataLoader = new DataLoader();
+
+        TryLoadingFromPrefs(() => _data = new(SEED_CASH));
     }
 
     public void BuyItem(GeneratorConfig generatorData)
@@ -148,5 +149,33 @@ public class PlayerController : Singleton<PlayerController>
         yield return new WaitForSeconds(2f);
 
         _gambleRewardAmount.transform.parent.gameObject.SetActive(false);
+    }
+
+    private void TryLoadingFromPrefs(Action onFail)
+    {
+        try
+        {
+            PlayerDataSerializable serData = _dataLoader.LoadFromPrefs();
+
+            _data = serData;
+        }
+        catch (Exception)
+        {
+            onFail?.Invoke();
+        }
+        finally
+        {
+            UpdateUI();
+        }
+    }
+
+    private void OnApplicationQuit()
+    {
+        _dataLoader.SaveToPrefs(Data);
+    }
+
+    private void OnApplicationPause(bool pause)
+    {
+        _dataLoader.SaveToPrefs(Data);
     }
 }

@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1637218455990156140}
   - component: {fileID: 2025756116112745689}
   - component: {fileID: 3791781388653496881}
-  - component: {fileID: 8876143758998648705}
+  - component: {fileID: 4282824578172909642}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8876143758998648705
+--- !u!114 &4282824578172909642
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
