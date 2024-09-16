@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using static PlayerDataSerializable;
 
 public class Generator
@@ -10,9 +11,12 @@ public class Generator
 
     private bool _running;
     private GeneratorSerializable gen;
+    private UnityEvent _onCycleComplete;
 
     public bool Running => _running;
     public bool Automated => _automated;
+
+    public float PayoutTimer => _payoutTimer;
 
     public GeneratorConfig GeneratorConfig => _generatorConfig;
 
@@ -21,6 +25,16 @@ public class Generator
         _generatorConfig = generatorConfig;
 
         _payoutTimer = _generatorConfig.PayoutTime;
+    }
+
+    public void AddOnCycleCompleteCllback(UnityAction callback)
+    {
+        if (_onCycleComplete == null)
+        {
+            _onCycleComplete = new UnityEvent();
+        }
+
+        _onCycleComplete.AddListener(callback);
     }
 
     public Generator(GeneratorSerializable gen)
@@ -54,6 +68,10 @@ public class Generator
             _running = true;
             _payoutTimer = _generatorConfig.PayoutTime;
         }
+        else
+        {
+            Stop();
+        }
     }
 
     public void OnUpdate()
@@ -67,8 +85,6 @@ public class Generator
 
         if (_payoutTimer < 0)
         {
-            _payoutTimer = 0;
-
             OnCycleComplete();
         }
     }
@@ -105,6 +121,8 @@ public class Generator
         _running = false;
 
         PlayerController.Instance.ReceiveCash(_generatorConfig.PayoutAmount);
+
+        _onCycleComplete.Invoke();
 
         if (!_automated)
         {

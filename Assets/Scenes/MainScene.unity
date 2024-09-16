@@ -520,8 +520,8 @@ MonoBehaviour:
     - Weight: 1
       Payout: 100000
   _cashOnHand: {fileID: 741216119}
-  _gambleRewardAmount: {fileID: 1333690532}
   _shop: {fileID: 428732529}
+  _changeUI: {fileID: 1882044062}
 --- !u!1 &1271198025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,6 +1169,7 @@ GameObject:
   - component: {fileID: 1882044061}
   - component: {fileID: 1882044060}
   - component: {fileID: 1882044059}
+  - component: {fileID: 1882044062}
   m_Layer: 5
   m_Name: Change
   m_TagString: Untagged
@@ -1261,6 +1262,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882044057}
   m_CullTransparentMesh: 1
+--- !u!114 &1882044062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882044057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bbd14c48503eae44a59faea28162aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gambleRewardAmount: {fileID: 1333690532}
 --- !u!1 &1946228506
 GameObject:
   m_ObjectHideFlags: 0

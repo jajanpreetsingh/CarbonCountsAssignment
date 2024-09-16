@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -58,10 +57,10 @@ public class PlayerController : Singleton<PlayerController>
     private TextMeshProUGUI _cashOnHand;
 
     [SerializeField]
-    private TextMeshProUGUI _gambleRewardAmount;
+    private GameObject _shop;
 
     [SerializeField]
-    private GameObject _shop;
+    private PayoutChangeUI _changeUI;
 
     private const int SEED_CASH = 100;
     private PlayerData _data;
@@ -132,23 +131,12 @@ public class PlayerController : Singleton<PlayerController>
 
         ReceiveCash(payout);
 
-        StartCoroutine(ShowGambleRewards(payout));
+        _changeUI.ShowCashUpdate(payout);
     }
 
     private void UpdateUI()
     {
         _cashOnHand.text = _data.CashOnHand.ToString();
-    }
-
-    private IEnumerator ShowGambleRewards(int gambleRewards)
-    {
-        _gambleRewardAmount.text = gambleRewards.ToString();
-
-        _gambleRewardAmount.transform.parent.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(2f);
-
-        _gambleRewardAmount.transform.parent.gameObject.SetActive(false);
     }
 
     private void TryLoadingFromPrefs(Action onFail)
