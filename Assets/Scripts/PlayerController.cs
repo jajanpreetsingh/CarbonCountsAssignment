@@ -60,6 +60,9 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField]
     private TextMeshProUGUI _gambleRewardAmount;
 
+    [SerializeField]
+    private GameObject _shop;
+
     private const int SEED_CASH = 100;
     private PlayerData _data;
 
@@ -74,6 +77,8 @@ public class PlayerController : Singleton<PlayerController>
         UpdateUI();
 
         _weightedPayoutTable.SanitizeStrips();
+
+        _shop.SetActive(true);
     }
 
     public void BuyItem(GeneratorConfig generatorData)
